@@ -30,3 +30,28 @@ export const IconButton = <const>{
   AUTHOR: 'fa fa-key',
   COPY: 'fa fa-copy'
 };
+export const ClassButton = <const>{
+  ADD: 'btn btn-success mr-2',
+  SEARCH: 'btn btn-primary mr-2',
+  QUERY: 'btn btn-primary mr-2',
+  SCAN: 'btn btn-primary mr-2',
+  CLEAR: 'btn btn-danger mr-2',
+  UPLOAD: 'btn btn-success mr-2',
+  DOWNLOAD: 'btn btn-success mr-2',
+  EXCEL: 'btn btn-success mr-2',
+  PDF: 'btn btn-success mr-2',
+  PRINT: 'btn btn-success mr-2',
+  SAVE: 'btn btn-success mr-2',
+  CLOSE: 'btn btn-danger mr-2',
+  CANCEL: 'btn btn-danger mr-2',
+  BACK: 'btn btn-primary btn-sm float-right',
+  tVIEW: 'btn btn-success btn-sm',
+  tDETAIL: 'btn btn-success btn-sm',
+  tEDIT: 'btn btn-warning btn-sm',
+  tCOPY: 'btn btn-success btn-sm',
+  tDELETE: 'btn btn-danger btn-sm',
+  tREMOVE: 'btn btn-danger btn-sm',
+  tUPDATE: 'btn btn-primary btn-sm',
+  tENABLED: 'btn btn-primary btn-sm',
+  tDISABLED: 'btn btn-danger btn-sm',
+};

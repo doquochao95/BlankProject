@@ -1,6 +1,7 @@
 export interface UserLoginParam {
   username: string;
   password: string;
+  factory: string;
 }
 
 export interface UserForLogged {
@@ -12,8 +13,12 @@ export interface UserForLogged {
   roleAll: RoleInfomation[]
 }
 
+// export interface RoleInfomation {
+//   name: string;
+//   unique: string;
+//   position: number | null;
+// }
 export interface RoleInfomation {
-  name: string;
-  unique: string;
-  position: number | null;
+  program_Name: string;
+  program_Code: string;
 }

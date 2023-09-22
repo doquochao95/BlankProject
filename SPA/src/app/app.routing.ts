@@ -27,9 +27,17 @@ export const routes: Routes = [
         component: DashboardComponent
       },
       {
-        // path: 'system-maintenance',
-        // loadChildren: () => import('./views/system-maintenance/system-maintenance.module').then(m => m.SystemMaintenanceModule)
+        path: 'maintain',
+        loadChildren: () => import('./views/maintain/maintain.module').then(m => m.MaintainModule)
       },
+      {
+        path: 'transaction',
+        loadChildren: () => import('./views/transaction/transaction.module').then(m => m.TransactionModule)
+      },
+      {
+        path: 'kanban',
+        loadChildren: () => import('./views/kanban/kanban.module').then(m => m.KanbanModule)
+      }
     ]
   },
   {

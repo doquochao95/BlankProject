@@ -5,6 +5,7 @@ using API._Services.Interfaces;
 using API.Helper.Params.Auth;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using SDCores;
 
 namespace API.Controllers.Auth
 {
@@ -27,34 +28,10 @@ namespace API.Controllers.Auth
         {
             var userForLogin = await _iAuth.Login(param);
             if (userForLogin == null)
-            {
                 return Unauthorized();
-            }
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, userForLogin.Id.ToString()),
-                new Claim(ClaimTypes.Name, userForLogin.Name)
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8
-                .GetBytes(_configuration.GetSection("AppSettings:Token").Value));
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddMonths(2),
-                SigningCredentials = creds
-            };
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-
             return Ok(new
             {
-                token = tokenHandler.WriteToken(token),
+                token = JwtUtility<JwtUserDto>.GenerateJwtToken(userForLogin.Username, userForLogin.Name),
                 user = userForLogin
             });
         }

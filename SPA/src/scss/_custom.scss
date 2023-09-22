@@ -279,8 +279,8 @@ ngx-treeview-item > .treeview-item > .ng-star-inserted:not(.form-inline) {
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
 }
 
-.snotifyToast__body  {
-  white-space : pre-line !important;
+.snotifyToast__body {
+  white-space: pre-line !important;
 }
 
 .snotify-confirm {
@@ -288,6 +288,7 @@ ngx-treeview-item > .treeview-item > .ng-star-inserted:not(.form-inline) {
   color: #000;
 }
 
+/*Organization Chart*/
 .ngx-org-box.ngx-org-border.ngx-org-background.layer-0 {
   border-radius: 5px;
   text-align: center;
@@ -298,7 +299,6 @@ ngx-treeview-item > .treeview-item > .ng-star-inserted:not(.form-inline) {
   border-color: #f86c6b;
   text-align: center;
 }
-
 .ngx-org-box.ngx-org-border.ngx-org-background.layer-2 {
   border-top: 5px solid;
   border-radius: 5px;
@@ -317,6 +317,46 @@ ngx-treeview-item > .treeview-item > .ng-star-inserted:not(.form-inline) {
 .ngx-org-title {
   white-space: pre-line !important;
 }
-.form-control[readonly] {
-  background-color: #ffffff;
+
+input[type="checkbox"] {
+  opacity: 0 !important;
+  width: 0px;
+  height: 0px;
+}
+input[type="checkbox"] + label {
+  background: #fff;
+}
+input[type="checkbox"]:disabled + label::before {
+  background: #fff;
+}
+input[type="checkbox"]:disabled + label:hover::before {
+  border: 3px solid #6ecdf0;
+}
+input[type="checkbox"] + label:before {
+  width: 16px;
+  height: 16px;
+  content: "";
+  background: #fff;
+  border-radius: 0.21428571rem;
+  -webkit-transition: border 0.1s ease, opacity 0.1s ease;
+  transition: border 0.1s ease, opacity 0.1s ease;
+  border: 1px solid #d4d4d5;
+}
+
+input[type="checkbox"]:checked ~ label:before {
+  background-color: #20a8d8;
+  background-image: url(../assets/img/icon/check.svg);
+  border: 2px solid #fff;
+  color: #20a8d8 !important;
+}
+.form-check.form-check-inline.ng-star-inserted > .form-check-label::before {
+  content: "___" !important;
+  font-size: 11px !important;
+  background-image: url(../assets/img/icon/check.svg);
+  color: white;
+}
+.treeview-container[_ngcontent-ng-c2988043123] {
+  overflow-y: hidden !important;
+  height: 100% !important;
+  max-height: none !important;
 }

@@ -31,6 +31,12 @@ import {
   AppSidebarModule,
 } from '@coreui/angular';
 
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
+
 // Import routing module
 import { AppRoutingModule } from './app.routing';
 
@@ -47,13 +53,17 @@ import {LoginComponent} from './views/login/login.component';
 import {P404Component} from './views/error/404.component';
 import {P500Component} from './views/error/500.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModalService } from '../app/_core/services/modal.service';
 import { NgxOrgChartModule } from '@tots/ngx-org-chart';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
 export function tokenGetter() {
   return localStorage.getItem(LocalStorageConstants.TOKEN);
 }
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   imports: [
     HttpClientModule,
@@ -68,13 +78,20 @@ export function tokenGetter() {
     AppHeaderModule,
     AppSidebarModule,
     NgxOrgChartModule,
-    PerfectScrollbarModule,
+    // PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     IconModule,
     SnotifyModule,
     NgxSpinnerModule,
     NgxBreadcrumbModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

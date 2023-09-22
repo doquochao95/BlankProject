@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Pagination } from "./pagination-utility";
 import { NgSnotifyService } from "../services/ng-snotify.service";
 import { NgxSpinnerService } from "ngx-spinner";
-import {LocalStorageConstants} from "@constants/local-storage.constants";
+import { LocalStorageConstants } from "@constants/local-storage.constants";
 
 @Injectable({
   providedIn: "root",
@@ -164,17 +164,41 @@ export class FunctionUtility {
     return params;
   }
 
-  exportExcel(result: Blob, fileName: string, type?: string) {
-    if(!type)
-      type = 'xlsx';
+  /**
+     * Append property HttpParams
+     * * @param value role_unique
+     */
+  convertUrlMenu(str: string, parentId: number, routerParents: string[]): string {
+    let valueStr: string = '';
+    str.split('.')[1].split('').forEach(character => {
+      valueStr += /[A-Z]/.test(character) ? `-${character.toLowerCase()}` : character;
+    });
+    return `${routerParents[parentId]}/${valueStr.substring(1)}`;
+  }
 
+  exportExcel(result: Blob | string, fileName: string, type?: string) {
+    if (typeof result === "string") {
+      let byteCharacters = atob(result);
+      let byteArrays = [];
+      for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+        let slice = byteCharacters.slice(offset, offset + 512);
+        let byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+        let byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+      result = new Blob(byteArrays, { type: 'application/xlsx' });
+    }
+    if (!type) type = 'xlsx';
     if (result.size == 0) {
       this.spinnerService.hide();
-      return this.snotify.warning('No Data', "Warning")
+      return this.snotify.warning('No Data', 'Warning');
     }
     if (result.type !== `application/${type}`) {
       this.spinnerService.hide();
-      return this.snotify.error(result.type.toString(), "Error");
+      return this.snotify.error(result.type.toString(), 'Error');
     }
     const blob = new Blob([result]);
     const url = window.URL.createObjectURL(blob);

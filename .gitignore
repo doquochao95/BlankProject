@@ -1,6 +1,57 @@
-.vscode
-.history
-.vs
-dist
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# MAIN
+**/node_modules
+**/.vscode
+**/.history
+**/.vs
+**/dist
+**/package-lock.json
+**/yarn.lock
+**/yarn-error.log
 .sln
-/package-lock.json
+
+# API
+*API/bin
+*API/obj
+*API/*.db
+
+# SPA
+# compiled output
+*SPA/tmp
+*SPA/out-tsc
+
+# Only exists if Bazel was run
+*SPA/bazel-out
+
+# dependencies
+*SPA/npm-debug.log
+
+# profiling files
+*SPA/chrome-profiler-events*.json
+
+# IDEs and editors
+*SPA/.idea
+*SPA/.project
+*SPA/.classpath
+*SPA/.c9/
+*SPA/*.launch
+*SPA/.settings/
+*SPA/*.sublime-workspace
+
+# misc
+*SPA/.angular/cache
+*SPA/.sass-cache
+*SPA/connect.lock
+*SPA/coverage
+*SPA/libpeerconnection.log
+*SPA/testem.log
+*SPA/typings
+
+# e2e
+*SPA/e2e/*.js
+*SPA/e2e/*.map
+
+# System Files
+*SPA/.DS_Store
+*SPA/Thumbs.db
