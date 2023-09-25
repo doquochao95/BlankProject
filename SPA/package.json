@@ -1,29 +1,15 @@
 {
-  "name": "@coreui/coreui-free-angular-admin-template",
-  "version": "2.15.0",
-  "description": "CoreUI Free Angular 15 Admin Template",
+  "name": "blankproject",
+  "version": "1.0.0",
+  "description": "SD team",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
+    "name": "sd team"
   },
-  "contributors": [
-    {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
-    }
-  ],
-  "homepage": "https://coreui.io/angular",
-  "copyright": "Copyright 2017-2022 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production --aot=true --build-optimizer=true --output-hashing=all",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "e2e": "ng e2e"
+    "build": "ng build --configuration production --aot=true --build-optimizer=true --output-hashing=all"
   },
   "private": true,
   "dependencies": {

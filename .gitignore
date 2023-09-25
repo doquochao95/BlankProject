@@ -2,7 +2,7 @@
 
 # MAIN
 **/node_modules
-**/.vscode
+# **/.vscode
 **/.history
 **/.vs
 **/dist

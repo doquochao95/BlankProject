@@ -1,0 +1,21 @@
+{
+    "angular.enable-strict-mode-prompt": false,
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "10.4.0.136",
+            "port": 1433,
+            "driver": "MSSQL",
+            "name": "10.4.0.136",
+            "group": "CiMES",
+            "database": "SSB",
+            "username": "cimes",
+            "password": "!QAZ2wsx"
+        }
+    ]
+}
